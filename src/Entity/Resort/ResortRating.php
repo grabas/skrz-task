@@ -79,7 +79,7 @@ class ResortRating
      */
     public function getAccommodationRating(): float
     {
-        return $this->accommodationRating;
+        return floatval($this->accommodationRating);
     }
 
     /**
@@ -87,7 +87,7 @@ class ResortRating
      */
     public function getFoodRating(): float
     {
-        return $this->foodRating;
+        return floatval($this->foodRating);
     }
 
     /**
@@ -95,7 +95,7 @@ class ResortRating
      */
     public function getSurroundingsRating(): float
     {
-        return $this->surroundingsRating;
+        return floatval($this->surroundingsRating);
     }
 
     /**
@@ -103,7 +103,7 @@ class ResortRating
      */
     public function getPriceRating(): float
     {
-        return $this->priceRating;
+        return floatval($this->priceRating);
     }
 
     /**
@@ -111,7 +111,7 @@ class ResortRating
      */
     public function getRatingValue(): float
     {
-        return $this->ratingValue;
+        return floatval($this->ratingValue);
     }
 
     /**
@@ -119,7 +119,7 @@ class ResortRating
      */
     public function getBestRating(): float
     {
-        return $this->bestRating;
+        return floatval($this->bestRating);
     }
 
     /**

@@ -19,7 +19,7 @@ final class ResortMediaRepository extends ServiceEntityRepository implements Res
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ResortRating::class);
+        parent::__construct($registry, ResortMedia::class);
     }
 
     /**

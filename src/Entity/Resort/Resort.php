@@ -49,7 +49,6 @@ class Resort
     private $media;
 
     /**
-     * Resort constructor.
      * @param string $name
      * @param string $country
      * @param string|null $area
@@ -138,7 +137,7 @@ class Resort
      */
     public function getLatitude(): ?float
     {
-        return $this->latitude;
+        return (float) $this->latitude;
     }
 
     /**
@@ -146,7 +145,7 @@ class Resort
      */
     public function getLongitude(): ?float
     {
-        return $this->longitude;
+        return (float) $this->longitude;
     }
 
     /**

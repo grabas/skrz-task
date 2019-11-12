@@ -1,0 +1,30 @@
+App\Entity\User\RefreshToken:
+    type: entity
+    table: user_refresh_token
+    repositoryClass: App\Repository\UserRefreshTokenRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        token:
+            type: string
+            max_length: 40
+            unique: true
+        expires:
+            type: datetime
+        lastUpdated:
+            type: datetime
+        dateCreated:
+            type: datetime
+    oneToOne:
+        user:
+            targetEntity: App\Entity\User\User
+            joinColumn:
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

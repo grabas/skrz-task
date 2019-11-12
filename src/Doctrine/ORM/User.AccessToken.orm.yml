@@ -1,0 +1,42 @@
+App\Entity\User\AccessToken:
+    type: entity
+    table: user_access_token
+    repositoryClass: App\Repository\UserAccessTokenRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        token:
+            type: string
+            max_length: 40
+            unique: true
+        expires:
+            type: datetime
+        lastUpdated:
+            type: datetime
+        dateCreated:
+            type: datetime
+    oneToOne:
+        user:
+            targetEntity: App\Entity\User\User
+            joinColumn:
+                referencedColumnName: id
+    manyToOne:
+        refreshToken:
+            targetEntity: App\Entity\User\RefreshToken
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_refresh_token_id:
+                    nullable: false
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,40 @@
+App\Entity\User\User:
+    type: entity
+    table: user
+    repositoryClass: App\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Jméno'
+        login:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Login'
+        password:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Heslo'
+        active:
+            type: boolean
+            nullable: false
+            default: false
+    lifecycleCallbacks: {  }

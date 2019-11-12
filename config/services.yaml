@@ -29,3 +29,9 @@ services:
     App\Service\ResortMediaService:
         arguments:
             $projectDirectory: '%kernel.project_dir%'
+
+    api.user_provider:
+        class: App\Security\TokenUserProvider
+
+    api.token_authenticator:
+        class: App\Security\TokenAuthenticator
