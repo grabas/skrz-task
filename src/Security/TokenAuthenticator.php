@@ -72,27 +72,18 @@ class TokenAuthenticator implements SimplePreAuthenticatorInterface, Authenticat
         $providerKey
     ): PreAuthenticatedToken {
         if (!$userProvider instanceof TokenUserProvider) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    'The user provider must be an instance of TokenUserProvider (%s was given).',
-                    get_class($userProvider)
-                )
-            );
+            throw new InvalidArgumentException('The user provider must be an instance of TokenUserProvider (' .  get_class($userProvider) . ' was given).');
         }
         $username = null;
         $token = $token->getCredentials();
         try {
             $username = $userProvider->getUsernameForApiKey($token);
         } catch (Throwable $e) {
-            throw new CustomUserMessageAuthenticationException(
-                sprintf('Token "%s" does not exist.', $token)
-            );
+            throw new CustomUserMessageAuthenticationException('Token ' . $token . ' does not exist.');
         }
 
         if ($username === null) {
-            throw new CustomUserMessageAuthenticationException(
-                sprintf('Token "%s" does not exist.', $token)
-            );
+            throw new CustomUserMessageAuthenticationException('Token ' . $token . ' does not exist.');
         }
 
         $user = $userProvider->loadUserByUsername($username);
