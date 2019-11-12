@@ -1,0 +1,77 @@
+App\Entity\Resort\ResortRating:
+  type: entity
+  table: resort_rating
+  repositoryClass: App\Repository\Resort\ResortRatingRepository
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      generator:
+        strategy: IDENTITY
+  fields:
+    ratingValue:
+      type: decimal
+      nullable: false
+      precision: 4
+      scale: 2
+      options:
+        unsigned: true
+      column: rating_value
+    bestRating:
+      type: decimal
+      nullable: false
+      precision: 4
+      scale: 2
+      options:
+        unsigned: true
+      column: best_rating
+    ratingCount:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      column: rating_count
+    accommodationRating:
+      type: decimal
+      nullable: false
+      precision: 4
+      scale: 2
+      options:
+        unsigned: true
+      column: accommodation_rating
+    foodRating:
+      type: decimal
+      nullable: false
+      precision: 4
+      scale: 2
+      options:
+        unsigned: true
+      column: food_rating
+    surroundingsRating:
+      type: decimal
+      nullable: false
+      precision: 4
+      scale: 2
+      options:
+        unsigned: true
+      column: surroundings_rating
+    priceRating:
+      type: decimal
+      nullable: false
+      precision: 4
+      scale: 2
+      options:
+        unsigned: true
+      column: price_rating
+    dateUpdated:
+      type: datetime
+  oneToOne:
+    resort:
+      targetEntity: App\Entity\Resort\Resort
+      mappedBy: rating
+
+
+  lifecycleCallbacks: {  }

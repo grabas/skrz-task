@@ -1,0 +1,89 @@
+App\Entity\Resort\Resort:
+  type: entity
+  table: resort
+  repositoryClass: App\Repository\Resort\ResortRepository
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      generator:
+        strategy: IDENTITY
+  fields:
+    name:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+        comment: 'Resort name'
+    country:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+        comment: 'Country'
+    area:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+        comment: 'State'
+    city:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+        comment: 'City'
+    description:
+      type: text
+      nullable: false
+      options:
+        comment: 'Description'
+    latitude:
+      type: decimal
+      nullable: true
+      precision: 10
+      scale: 8
+      options:
+        comment: 'Latitude'
+    longitude:
+      type: decimal
+      nullable: true
+      precision: 11
+      scale: 8
+      options:
+        fixed: false
+        comment: 'Longitude'
+    source:
+      type: string
+      nullable: false
+      length: 255
+      option:
+        fixed: false
+        comment: 'Data source'
+    dateCreated:
+      type: datetime
+    dateUpdated:
+      type: datetime
+  oneToOne:
+    rating:
+      targetEntity: App\Entity\Resort\ResortRating
+      inversedBy: resort
+      joinColumns:
+        resort_rating_id:
+          nullable: true
+          referencedColumnName: id
+      orphanRemoval: false
+  oneToMany:
+    media:
+      targetEntity: \App\Entity\Resort\ResortMedia
+      mappedBy: resort
+      orderBy: { 'id': 'ASC' }
+
+  lifecycleCallbacks: {  }

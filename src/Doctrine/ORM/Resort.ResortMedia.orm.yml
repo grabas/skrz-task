@@ -1,0 +1,42 @@
+App\Entity\Resort\ResortMedia:
+  type: entity
+  table: resort_media
+  repositoryClass: App\Repository\Resort\ResortMediaRepository
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      generator:
+        strategy: IDENTITY
+  fields:
+    name:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+        comment: 'media name'
+    path:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+        comment: 'media path'
+    dateCreated:
+      type: datetime
+  manyToOne:
+    resort:
+      targetEntity: App\Entity\Resort\Resort
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        resort_id:
+          referencedColumnName: id
+      orphanRemoval: false
+
+  lifecycleCallbacks: {  }
