@@ -3,9 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Kernel;
 use App\Model\InviaResortDataExtractor\InviaResortDataExtractor;
-use App\Repository\GoogleMapsGeocodeRepository\GoogleMapsGeocodeRepository;
 use App\Service\ResortMediaService;
 use App\Service\ResortService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,9 +14,6 @@ use Throwable;
 
 class PlayController extends AbstractController
 {
-    /** @var GoogleMapsGeocodeRepository */
-    private $googleApiRepository;
-
     /** @var ResortService */
     private $resortService;
 
@@ -26,16 +21,13 @@ class PlayController extends AbstractController
     private $resortMediaService;
 
     /**
-     * @param GoogleMapsGeocodeRepository $googleApiRepository
      * @param ResortService $resortService
      * @param ResortMediaService $resortMediaService
      */
     public function __construct(
-        GoogleMapsGeocodeRepository $googleApiRepository,
         ResortService $resortService,
         ResortMediaService $resortMediaService
     ) {
-        $this->googleApiRepository = $googleApiRepository;
         $this->resortService = $resortService;
         $this->resortMediaService = $resortMediaService;
     }
@@ -70,7 +62,7 @@ class PlayController extends AbstractController
                 $inviaParser = new InviaResortDataExtractor($content);
                 $resortCreateDto = $inviaParser->parseForResortData();
 
-                $resortDtos[] =$resortDto = $this->resortService->createResort($resortCreateDto);
+                $resortDtos[] = $resortDto = $this->resortService->createResort($resortCreateDto);
 
                 $picturesData = $inviaParser->parseForPictures();
                 foreach ($picturesData as $index => $picture) {
