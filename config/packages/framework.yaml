@@ -1,4 +1,5 @@
 framework:
+    templating: { engines: ['twig'] }
     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
     #http_method_override: true
@@ -14,3 +15,14 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+fos_rest:
+    view:
+        view_response_listener: 'force'
+    serializer:
+        serialize_null: true
+    format_listener:
+        enabled: true
+        rules:
+            - { path: '^/api', priorities: ['json'], fallback_format: json  }
+            - { path: '^/', priorities: ['text/html', '*/*'], fallback_format: html, prefer_extension: true }

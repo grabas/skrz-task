@@ -69,11 +69,12 @@ class ResortService
     }
 
     /**
-     * @param int $int
-     * @return Resort
+     * @param int $id
+     * @return ResortDto
      */
-    public function getResort(int $int): Resort
+    public function getForApi(int $id): ResortDto
     {
-        return $this->resortRepository->get($int);
+        $resort = $this->resortRepository->get($id);
+        return (new ResortAssembler())->toDto($resort);
     }
 }
