@@ -26,11 +26,6 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Repository\GoogleMapsGeocodeRepository\GoogleMapsGeocodeRepository:
-        arguments:
-            $googleApiKey: '%env(GOOGLE_API_KEY)%'
-        public: true
-
     App\Service\ResortMediaService:
         arguments:
             $projectDirectory: '%kernel.project_dir%'
